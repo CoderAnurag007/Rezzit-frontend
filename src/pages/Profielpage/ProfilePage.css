@@ -1,0 +1,13 @@
+.ProfilePage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 18rem auto 20rem;
+  gap: 1rem;
+  z-index: 2;
+}
+.ProfileCenter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}

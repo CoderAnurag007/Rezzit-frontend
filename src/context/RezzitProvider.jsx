@@ -4,6 +4,8 @@ export const RezzitContext = createContext(null);
 
 const RezzitProvider = ({ children }) => {
   const [updated, setupdated] = useState(false);
+  const [on, off] = useState(false);
+
   return (
     <RezzitContext.Provider
       value={{

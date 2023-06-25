@@ -1,9 +1,11 @@
 import React from "react";
+import Avatar from "avataaars";
 import "./profilecard.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 const server = process.env.REACT_APP_PUBLIC_FOLDER;
+// import { Avatar } from "@mantine/core";
 
 const Profilecard = ({ location }) => {
   const { user } = useSelector((state) => state.AuthReducer.authData);
@@ -24,13 +26,30 @@ const Profilecard = ({ location }) => {
           }
           alt=""
         />
-        <img
+        {/* <img
           src={
             user.profilepicture
               ? server + user.profilepicture
               : server + "defaultProfile.png"
           }
           alt=""
+        /> */}
+        <Avatar
+          avatarStyle="Circle"
+          topType="ShortHairShortWaved"
+          accessoriesType="Wayfarers"
+          hairColor="Black"
+          facialHairType="BeardMajestic"
+          facialHairColor="Black"
+          clotheType="BlazerShirt"
+          eyeType="Default"
+          eyebrowType="AngryNatural"
+          mouthType="Smile"
+          skinColor="Pale"
+          style={{
+            width: "120px",
+            height: "120px",
+          }}
         />
       </div>
 

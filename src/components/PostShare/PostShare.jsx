@@ -1,5 +1,4 @@
-import React from "react";
-import Profile from "../../img/profileImg.jpg";
+import React, { useContext, useEffect } from "react";
 import "./PostShare.css";
 import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilScenery } from "@iconscout/react-unicons";
@@ -8,53 +7,68 @@ import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadImage, uploadPost } from "../../Actions/uploadAction";
+import { uploadPost } from "../../Actions/uploadAction";
+import { RezzitContext } from "../../context/RezzitProvider";
+import axios from "axios";
 
-const PostShare = () => {
-  const loading = useSelector((state) => state.PostReducer.uploading);
+const PostShare = (props) => {
+  const { update, prevalue, postid, setmodalOpen } = props;
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const imageRef = useRef();
+  const { uploading } = useSelector((state) => state.PostReducer);
   const desc = useRef();
   const { user } = useSelector((state) => state.AuthReducer.authData);
   const server = process.env.REACT_APP_PUBLIC_FOLDER;
   // console.log(user);
-  const onImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      let img = e.target.files[0];
-      setImage(img);
-    }
+  const [descval, setdescval] = useState("");
+  const { updated, setupdated } = useContext(RezzitContext);
+  const handleUpdate = async (postid, data) => {
+    const res = await axios({
+      url: `https://rezzit-backend.onrender.com/post/${postid}/updatepost`,
+      method: "put",
+      data: data,
+    });
+
+    setupdated(!updated);
   };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setdescval(e.target.value);
+  };
+
   const reset = () => {
     setImage(null);
-    desc.current.value = null;
+    setdescval("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    if (descval == "") {
+      alert("Please enter description");
+      return false;
+    }
     const newPost = {
       userId: user._id,
-      desc: desc.current.value,
+      desc: descval,
     };
-    if (image) {
-      const data = new FormData();
-      const filename = Date.now() + image.name;
-      data.append("name", filename);
-      data.append("file", image);
-      newPost.image = filename;
-      console.log(newPost);
-
-      try {
-        dispatch(uploadImage(data));
-      } catch (error) {
-        console.log(error);
-      }
+    if (update) {
+      setmodalOpen(false);
+      handleUpdate(postid, newPost);
+      reset();
+      return;
+    } else {
+      dispatch(uploadPost(newPost));
+      reset();
     }
-    dispatch(uploadPost(newPost));
-
-    reset();
   };
 
+  useEffect(() => {
+    if (update) {
+      setdescval(prevalue);
+    }
+    console.log(props.postid, update, prevalue, "heheh");
+  }, []);
   return (
     <div className="PostShare">
       <img
@@ -66,75 +80,31 @@ const PostShare = () => {
         alt=""
       />
       <div>
-        <input type="text" ref={desc} required placeholder="What's happening" />
+        <input
+          type="text"
+          // ref={desc}
+          onChange={(e) => handleChange(e)}
+          value={descval}
+          required
+          placeholder="What's happening"
+        />
 
         <div className="Postshare_option">
-          <div
-            className="option"
-            style={{
-              color: "var(--photo)",
-            }}
-            onClick={() => imageRef.current.click()}
-          >
-            <UilScenery />
-            Photo
-          </div>
-          <div
-            className="option"
-            style={{
-              color: "var(--video)",
-            }}
-          >
-            <UilPlayCircle />
-            Video
-          </div>
-          <div
-            className="option"
-            style={{
-              color: "var(--location)",
-            }}
-          >
-            <UilLocationPoint />
-            Location
-          </div>
-          <div
-            className="option"
-            style={{
-              color: "var(--schedule)",
-            }}
-          >
-            <UilSchedule />
-            Schedule
-          </div>
           <button
             className="button ps-btn"
             onClick={handleSubmit}
-            disabled={loading}
+            disabled={uploading}
           >
-            {loading ? "Uploading..." : "Share"}
+            {uploading
+              ? "Uploading..."
+              : update
+              ? "Update Thought"
+              : "Share Thought"}
           </button>
-          <div className="input" style={{ display: "none" }}>
-            <input
-              type="file"
-              name="myImage"
-              ref={imageRef}
-              onChange={onImageChange}
-            />
-          </div>
         </div>
-        {image && (
-          <div className="previewimg">
-            <UilTimes
-              onClick={() => {
-                setImage(null);
-              }}
-            />
-            <img src={URL.createObjectURL(image)} alt="" />
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
-export default PostShare;
+export default React.memo(PostShare);

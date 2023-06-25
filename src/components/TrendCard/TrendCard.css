@@ -1,22 +1,34 @@
 .TrendCard {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  box-shadow: 0 3px 20px rgb(228, 228, 228);
+  /* gap: 1rem; */
   background-color: var(--cardColor);
   padding: 1rem;
   padding-left: 2rem;
   border-radius: 1rem;
   /* height: 20rem; */
 }
-.trend-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.TrendCard .img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: url("../../../public/profile.jpeg");
+  background-size: cover;
+  background-position: top;
+  margin: auto;
 }
-.trend-item > span:nth-of-type(1) {
-  font-weight: bold;
+
+.TrendCard p {
+  text-align: center;
+  color: rgb(71, 71, 71);
 }
-.trend-item > span:nth-of-type(2) {
-  font-size: small;
-  color: gray;
+
+.TrendCard h3 {
+  text-align: center;
+}
+
+.TrendCard a {
+  text-align: center;
+  color: rgb(123, 0, 255);
 }

@@ -2,17 +2,19 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   width: 95%;
+  margin: auto;
+  margin-top: 0;
 }
 .navIcons {
   display: flex;
   margin-top: 1rem;
-  justify-content: space-between;
+  justify-content: center;
 }
 .navIcons img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 .r-button {
   height: 3rem;

@@ -1,9 +1,14 @@
 .ProfilePage {
   position: relative;
   display: grid;
-  grid-template-columns: 18rem auto 20rem;
-  gap: 1rem;
+  grid-template-columns: 1fr 2fr 1fr;
   z-index: 2;
+  gap: 1rem;
+}
+@media (max-width: 800px) {
+  .ProfilePage {
+    grid-template-columns: 1fr;
+  }
 }
 .ProfileCenter {
   display: flex;

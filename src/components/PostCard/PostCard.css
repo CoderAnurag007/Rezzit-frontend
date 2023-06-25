@@ -1,10 +1,15 @@
 .postCard {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 5px;
+  padding-left: 10px;
   background: var(--cardColor);
+  margin: auto;
+  /* width: 23rem; */
+  width: 95%;
   border-radius: 1rem;
   gap: 1rem;
+  box-shadow: 0 3px 20px rgb(228, 228, 228);
 }
 
 .postCard > img {
@@ -18,4 +23,31 @@
   align-items: flex-start;
   gap: 1.5rem;
   cursor: pointer;
+}
+.detail {
+  align-items: center;
+  /* border: 2px solid red; */
+  display: flex;
+  gap: 10px;
+}
+
+.detail svg {
+  width: 24px;
+  height: 24px;
+  color: rgb(140, 0, 192);
+}
+.detail div:nth-of-type(2) svg {
+  color: rgb(255, 0, 0);
+}
+
+.detail div {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 100%; */
+  padding: 3px;
+  border-radius: 8px;
+  background: #dedede43;
+  /* border: 1px solid red; */
 }

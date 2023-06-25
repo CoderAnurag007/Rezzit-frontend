@@ -140,12 +140,7 @@ function ProfileModal({ modalOpened, setmodalOpen, data }) {
             value={formdata.relationship}
           />
         </div>
-        <div>
-          Profile Image
-          <input type="file" name="profilepicture" onChange={onImageChange} />
-          Cover Image
-          <input type="file" name="coverpicture" onChange={onImageChange} />
-        </div>
+
         <button className="button infoButton" onClick={handleSubmit}>
           Update
         </button>

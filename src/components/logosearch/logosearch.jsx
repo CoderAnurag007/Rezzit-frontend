@@ -1,6 +1,6 @@
 import React from "react";
 import "./logosearch.css";
-import Logo from "../../img/logo.png";
+import Logo from "../../img/ducklogo.gif";
 import { UilSearch } from "@iconscout/react-unicons";
 import { Link } from "react-router-dom";
 

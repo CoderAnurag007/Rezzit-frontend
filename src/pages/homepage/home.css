@@ -1,7 +1,26 @@
 .Home {
   position: relative;
   display: grid;
-  grid-template-columns: 18rem auto 20rem;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-top: 1rem;
   gap: 1rem;
+  padding: 1rem;
+
   /* background: transparent; */
+}
+@media (max-width: 800px) {
+  .Home {
+    grid-template-columns: 1fr;
+  }
+}
+
+.internet {
+  position: absolute;
+  top: 1rem;
+  right: 50px;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 6px;
+  z-index: 5;
+  box-shadow: 0 0 15px rgba(143, 143, 143, 0.571);
 }

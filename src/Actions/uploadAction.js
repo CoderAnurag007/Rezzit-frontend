@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import * as UploadApi from "../api/uploadApi.js";
+import { RezzitContext } from "../context/RezzitProvider.jsx";
 
 export const uploadImage = (data) => async (dispatch) => {
   try {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import Profileside from "../../components/profileside/profileside";
 import PostSide from "../../components/Postside/PostSide";

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://rezzit-backend.onrender.com",
 });
 
 export const getUser = (id) => API.get(`/user/${id}`);

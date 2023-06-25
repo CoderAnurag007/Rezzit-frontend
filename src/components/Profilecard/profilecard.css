@@ -2,10 +2,13 @@
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 3px 20px rgb(228, 228, 228);
+  padding-bottom: 1rem;
   position: relative;
   gap: 1rem;
   overflow-x: clip;
   margin-left: 10px;
+  margin-bottom: 1rem;
   background: var(--cardColor);
 }
 .ProfileImages {
@@ -17,7 +20,7 @@
 }
 .ProfileImages > img:nth-of-type(1) {
   width: 100%;
-  height: 10rem;
+  height: 6rem;
 }
 .ProfileImages > img:nth-of-type(2) {
   width: 6rem;
@@ -26,7 +29,7 @@
   position: absolute;
   bottom: -3rem;
   box-shadow: var(--profileShadow);
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .Profilename {
@@ -84,11 +87,18 @@
 }
 .linktag {
   font-weight: bold;
-  color: orange;
+  color: rgb(166, 0, 255);
   text-align: center;
   margin-bottom: 1rem;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.linktag svg {
+  width: 30px;
+  height: 30px;
 }
 
 .linktag:hover {

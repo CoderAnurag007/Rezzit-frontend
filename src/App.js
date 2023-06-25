@@ -4,6 +4,7 @@ import Home from "./pages/homepage/home";
 import ProfilePage from "./pages/Profielpage/ProfilePage";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Otp from "./pages/Demo/Otp";
 
 function App() {
   const user = useSelector((state) => state.AuthReducer.authData);
@@ -30,10 +31,11 @@ function App() {
           path="/profile/:id"
           element={user ? <ProfilePage /> : <Navigate to={"auth"} />}
         />
+        <Route path="/demo" element={<Otp />} />
       </Routes>
 
-      <div className="blur" style={{ top: "-12%", right: "0" }}></div>
-      <div className="blur" style={{ top: "36%", left: "-8rem" }}></div>
+      {/* <div className="blur" style={{ top: "-12%", right: "0" }}></div>
+      <div className="blur" style={{ top: "36%", left: "-8rem" }}></div> */}
     </div>
   );
 }

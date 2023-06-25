@@ -1,14 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap");
 :root {
-  --yellow: #f5c32c;
-  --orange: #fca61f;
+  --yellow: #872cf5;
+  --orange: #e21ffc;
   --black: #242d49;
   --gray: rgba(36, 45, 73, 0.65);
   --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
   --hrColor: #cfcdcd;
   --cardColor: rgba(255, 255, 255, 0.64);
-  --buttonBg: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+  --buttonBg: linear-gradient(98.63deg, #bd25f9 0%, #f935f6 100%);
   --inputColor: rgba(40, 52, 62, 0.07);
   --photo: #4cb256;
   --video: #4a4eb7;
@@ -16,13 +15,13 @@
   --schedule: #e1ae4a;
 }
 html body {
-  font-family: "Inter", sans-serif;
+  font-family: "Nunito", sans-serif !important;
   /* background: transparent; */
 }
 .App {
   color: var(--black);
   overflow: hidden;
-  background: #f3f3f3;
+  background: #fdf9ff;
 
   /* background: transparent; */
 }
@@ -47,15 +46,15 @@ html body {
 }
 .button:hover {
   cursor: pointer;
-  color: orange;
+  color: rgb(144, 0, 255);
   background: transparent;
-  box-shadow: inset 0px 0px 0px 2px orange;
+  box-shadow: inset 0px 0px 0px 2px rgb(144, 0, 255);
   box-sizing: border-box;
 }
 ::-webkit-scrollbar {
   display: none;
 }
 .button:disabled {
-  background: silver;
+  background: rgb(243, 206, 255);
   pointer-events: none;
 }
